@@ -1,4 +1,8 @@
 /*Estilos diversos*/
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .marcador {
     background: rgb(143, 115, 115);
     height: 225px;
