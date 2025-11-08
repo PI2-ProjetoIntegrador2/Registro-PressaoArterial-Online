@@ -16,12 +16,16 @@
     <!-- Font Awesome CSS -->
     <script src="https://kit.fontawesome.com/a003e7e3bf.js" crossorigin="anonymous"></script>
 
-    <!-- Estilo customizado -->
+    <!-- Estilos customizados -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
 
     <!-- jQuery Snippet 3.x -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
+    <!-- JS -->
+    <script src="src/js/dark-mode.js"></script>
 </head>
 
 <body>
@@ -52,6 +56,11 @@
                         </li>
                     </ul>
                 </div>
+
+                <!-- Botão do modo escuro -->
+                <button id="darkModeToggle" title="Alternar modo escuro">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
             </div>
         </nav>
     </header><!--/ Fim cabecalho -->
@@ -178,6 +187,26 @@
 
     <!-- JavaScript (Autenticação) -->
     <script src="src\js\pagina1-js.js"></script>
+
+    <!-- JavaScript (Modo escuro) -->
+    <script>
+        const toggle = document.getElementById('darkModeToggle');
+        const icon = toggle.querySelector('i');
+        const body = document.body;
+
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const dark = body.classList.contains('dark-mode');
+            icon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            localStorage.setItem('darkMode', dark);
+        });
+
+        // essa partee é pra manter o tema que foi escolhido!
+        if (localStorage.getItem('darkMode') === 'true') {
+            body.classList.add('dark-mode');
+            icon.className = 'fa-solid fa-sun';
+        }
+    </script>
 </body>
 
 </html>
